@@ -1,0 +1,72 @@
+{
+  "name": "Project",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Project name"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "webdev",
+        "design",
+        "seo",
+        "ai",
+        "branding"
+      ],
+      "description": "Project category"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short description"
+    },
+    "full_description": {
+      "type": "string",
+      "description": "Full project description"
+    },
+    "challenge": {
+      "type": "string",
+      "description": "The problem/challenge this project solved"
+    },
+    "solution": {
+      "type": "string",
+      "description": "The approach and solution implemented"
+    },
+    "results": {
+      "type": "string",
+      "description": "Outcomes and results achieved"
+    },
+    "image": {
+      "type": "string",
+      "description": "Project screenshot/mockup image URL"
+    },
+    "gallery_images": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Additional screenshot URLs"
+    },
+    "live_url": {
+      "type": "string",
+      "description": "Live project URL"
+    },
+    "tech_stack": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Technologies used"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Featured project"
+    }
+  },
+  "required": [
+    "name",
+    "category"
+  ]
+}
