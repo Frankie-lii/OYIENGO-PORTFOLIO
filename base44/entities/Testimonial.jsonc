@@ -1,0 +1,39 @@
+{
+  "name": "Testimonial",
+  "type": "object",
+  "properties": {
+    "client_name": {
+      "type": "string",
+      "description": "Client name"
+    },
+    "client_title": {
+      "type": "string",
+      "description": "Client title/role"
+    },
+    "company": {
+      "type": "string",
+      "description": "Company name"
+    },
+    "review": {
+      "type": "string",
+      "description": "Testimonial text"
+    },
+    "service_type": {
+      "type": "string",
+      "description": "Service provided"
+    },
+    "rating": {
+      "type": "number",
+      "default": 5,
+      "description": "Rating out of 5"
+    },
+    "photo": {
+      "type": "string",
+      "description": "Client profile photo URL"
+    }
+  },
+  "required": [
+    "client_name",
+    "review"
+  ]
+}
