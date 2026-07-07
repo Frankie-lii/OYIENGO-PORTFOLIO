@@ -1,0 +1,26 @@
+{
+  "name": "Certification",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Certificate name"
+    },
+    "issuing_organization": {
+      "type": "string",
+      "description": "Issuing organization"
+    },
+    "date_issued": {
+      "type": "string",
+      "format": "date",
+      "description": "Date issued"
+    },
+    "image": {
+      "type": "string",
+      "description": "Certificate image URL"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
