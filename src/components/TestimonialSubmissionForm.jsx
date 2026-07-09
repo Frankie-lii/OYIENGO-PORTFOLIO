@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import { base44 } from '@/api/base44Client';
+import { apiClient } from '@/api/Base44Client';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { ImagePlus, Loader2, Send, CheckCircle2 } from 'lucide-react';
@@ -32,10 +32,10 @@ export default function TestimonialSubmissionForm() {
     try {
       let photoUrl = '';
       if (photoFile) {
-        const { file_url } = await base44.integrations.Core.UploadFile({ file: photoFile });
+        const { file_url } = await apiClient.integrations.Core.UploadFile({ file: photoFile });
         photoUrl = file_url;
       }
-      await base44.entities.Testimonial.create({ ...form, photo: photoUrl });
+      await apiClient.entities.Testimonial.create({ ...form, photo: photoUrl });
       queryClient.invalidateQueries({ queryKey: ['testimonials'] });
       setSubmitted(true);
       setForm({ client_name: '', company: '', review: '', rating: 5 });
@@ -139,7 +139,7 @@ export default function TestimonialSubmissionForm() {
         <button
           type="submit"
           disabled={saving}
-          className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-electric text-white font-semibold rounded-xl hover:bg-electric-bright transition-all hover:shadow-lg hover:shadow-electric/30 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-electric text-white font-semibold rounded-xl hover:bg-electric-bright transition-all hover:shadow-lg hover:shadow-electric/20 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {saving ? <><Loader2 size={18} className="animate-spin" /> Submitting...</> : <><Send size={18} /> Submit Testimonial</>}
         </button>
