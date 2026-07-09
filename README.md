@@ -1,12 +1,12 @@
-# Digital Flow
+# OYIENGO Portfolio
 
-A modern, responsive digital agency website designed to help businesses establish a strong online presence through professional web development, SEO, UI/UX design, branding, and digital marketing services.
+A modern, responsive digital portfolio website designed to showcase web development, SEO, UI/UX design, branding, and digital marketing services. Built with React, Vite, and Tailwind CSS.
 
 ---
 
 ## About
 
-This project demonstrates a modern agency website with a clean user interface, responsive layouts, and optimized performance. It showcases services, portfolio, testimonials, and contact features to help businesses attract and convert potential clients.
+This project demonstrates a modern portfolio website with a clean user interface, responsive layouts, and optimized performance. It showcases services, portfolio, testimonials, and contact features.
 
 ---
 
@@ -20,16 +20,21 @@ This project demonstrates a modern agency website with a clean user interface, r
 - Contact form
 - SEO-friendly structure
 - Fast loading performance
+- Authentication system
+- Admin dashboard
 
 ---
 
 ## Technologies Used
 
-- React
+- React 18+
 - JavaScript (ES6+)
 - HTML5
-- CSS3
+- CSS3 / Tailwind CSS
 - Vite
+- React Router
+- Radix UI
+- React Query
 
 ---
 
@@ -45,13 +50,13 @@ This project demonstrates a modern agency website with a clean user interface, r
 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/digital-flow.git
+git clone https://github.com/Frankie-lii/OYIENGO-PORTFOLIO.git
 ```
 
 2. Navigate into the project folder
 
 ```bash
-cd digital-flow
+cd OYIENGO-PORTFOLIO
 ```
 
 3. Install dependencies
@@ -86,19 +91,21 @@ npm run build
 
 ```
 src/
-│── components/
-│── pages/
-│── assets/
-│── styles/
-│── App.jsx
-│── main.jsx
+├── components/          # Reusable UI components
+├── pages/              # Page components
+├── api/                # API integration
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions and context
+├── utils/              # Helper utilities
+├── App.jsx
+└── main.jsx
 ```
 
 ---
 
 ## Purpose
 
-Digital Flow is designed to help businesses strengthen their online presence through modern web design, SEO optimization, and digital marketing solutions. The project focuses on delivering an engaging user experience while maintaining clean, scalable, and maintainable code.
+This portfolio showcases modern web development skills and digital solutions. It demonstrates expertise in building responsive, user-friendly websites with performance optimization and SEO best practices.
 
 ---
 
