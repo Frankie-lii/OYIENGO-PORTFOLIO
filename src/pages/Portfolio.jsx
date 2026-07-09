@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { base44 } from '@/api/base44Client';
+import { apiClient } from '@/api/Base44Client';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Search, X } from 'lucide-react';
 import Section from '../components/Section';
@@ -26,7 +26,7 @@ export default function Portfolio() {
 
   const { data: projects = [], isLoading } = useQuery({
     queryKey: ['projects'],
-    queryFn: () => base44.entities.Project.list('-created_date'),
+    queryFn: () => apiClient.entities.Project.list('-created_date'),
   });
 
   const results = useMemo(() => {
@@ -61,7 +61,7 @@ export default function Portfolio() {
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Search by project name or technology (e.g. React, SEO, MySQL…)"
-            className="w-full bg-white/5 border border-white/10 rounded-full pl-11 pr-10 py-3 text-white text-sm font-inter placeholder-white/25 focus:outline-none focus:border-electric focus:bg-white/8 transition-all"
+            className="w-full bg-white/5 border border-white/10 rounded-full pl-11 pr-10 py-3 text-white text-sm font-inter placeholder-white/25 focus:outline-none focus:border-electric focus:bg-white/10 transition-all"
           />
           {search && (
             <button onClick={clearSearch} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-colors">
@@ -91,7 +91,7 @@ export default function Portfolio() {
         <div className="text-center mb-8">
           <span className="text-white/30 text-sm font-mono">
             {search ? (
-              <>Searching <span className="text-electric">"{search}"</span> · </>
+              <>Searching <span className="text-electric">\"{ search}\"</span> · </>
             ) : (
               <>Showing <span className="text-electric">{FILTERS.find(f => f.key === filter)?.label}</span> · </>
             )}

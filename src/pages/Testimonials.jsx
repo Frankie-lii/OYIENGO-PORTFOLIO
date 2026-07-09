@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { base44 } from '@/api/base44Client';
+import { apiClient } from '@/api/Base44Client';
 import { Skeleton } from '@/components/ui/skeleton';
 import { MessageSquare } from 'lucide-react';
 import Section from '../components/Section';
@@ -10,7 +10,7 @@ import TestimonialSubmissionForm from '../components/TestimonialSubmissionForm';
 export default function Testimonials() {
   const { data: testimonials = [], isLoading } = useQuery({
     queryKey: ['testimonials'],
-    queryFn: () => base44.entities.Testimonial.list('-created_date'),
+    queryFn: () => apiClient.entities.Testimonial.list('-created_date'),
   });
 
   return (

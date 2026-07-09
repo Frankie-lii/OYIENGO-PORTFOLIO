@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { base44 } from '@/api/base44Client';
+import { apiClient } from '@/api/Base44Client';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Search, X } from 'lucide-react';
 import Section from '../components/Section';
@@ -14,7 +14,7 @@ export default function Certifications() {
 
   const { data: certs = [], isLoading } = useQuery({
     queryKey: ['certifications'],
-    queryFn: () => base44.entities.Certification.list('-created_date'),
+    queryFn: () => apiClient.entities.Certification.list('-created_date'),
   });
 
   const filtered = useMemo(() => {
