@@ -1,10 +1,27 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { base44 } from '@/api/base44Client';
 import { Trash2, Upload, Plus, X, FolderOpen, Award, MessageSquare } from 'lucide-react';
 import TestimonialUploadForm from '../components/admin/TestimonialUploadForm';
 import ProjectUploadForm from '../components/admin/ProjectUploadForm';
 import CertificationUploadForm from '../components/admin/CertificationUploadForm';
+
+// Mock API client - replace with your actual API implementation
+const api = {
+  entities: {
+    Project: {
+      list: async (sort) => [],
+      delete: async (id) => {}
+    },
+    Testimonial: {
+      list: async (sort) => [],
+      delete: async (id) => {}
+    },
+    Certification: {
+      list: async (sort) => [],
+      delete: async (id) => {}
+    }
+  }
+};
 
 export default function Admin() {
   const [tab, setTab] = useState('projects');
@@ -15,31 +32,31 @@ export default function Admin() {
 
   const { data: projects = [], isLoading: loadingProjects } = useQuery({
     queryKey: ['projects'],
-    queryFn: () => base44.entities.Project.list('-created_date'),
+    queryFn: () => api.entities.Project.list('-created_date'),
   });
 
   const { data: testimonials = [], isLoading: loadingTestimonials } = useQuery({
     queryKey: ['testimonials'],
-    queryFn: () => base44.entities.Testimonial.list('-created_date'),
+    queryFn: () => api.entities.Testimonial.list('-created_date'),
   });
 
   const deleteTestimonial = useMutation({
-    mutationFn: (id) => base44.entities.Testimonial.delete(id),
+    mutationFn: (id) => api.entities.Testimonial.delete(id),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['testimonials'] }),
   });
 
   const { data: certs = [], isLoading: loadingCerts } = useQuery({
     queryKey: ['certifications'],
-    queryFn: () => base44.entities.Certification.list('-created_date'),
+    queryFn: () => api.entities.Certification.list('-created_date'),
   });
 
   const deleteProject = useMutation({
-    mutationFn: (id) => base44.entities.Project.delete(id),
+    mutationFn: (id) => api.entities.Project.delete(id),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['projects'] }),
   });
 
   const deleteCert = useMutation({
-    mutationFn: (id) => base44.entities.Certification.delete(id),
+    mutationFn: (id) => api.entities.Certification.delete(id),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['certifications'] }),
   });
 
@@ -158,7 +175,7 @@ export default function Admin() {
                     <div className="flex-1 min-w-0">
                       <p className="text-white font-sora font-semibold truncate">{t.client_name}</p>
                       <p className="text-white/40 text-xs font-inter">{[t.client_title, t.company].filter(Boolean).join(' · ')}</p>
-                      <p className="text-white/30 text-xs font-inter truncate mt-0.5 italic">"{t.review?.slice(0, 60)}{t.review?.length > 60 ? '...' : ''}"</p>
+                      <p className="text-white/30 text-xs font-inter truncate mt-0.5 italic">\"{ t.review?.slice(0, 60)}{t.review?.length > 60 ? '...' : ''}\"</p>
                     </div>
                     <button
                       onClick={() => deleteTestimonial.mutate(t.id)}
